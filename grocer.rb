@@ -13,15 +13,16 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
    item = coupon[:item]
    num = coupon[:num]
+   count = cart[item][:count]
    if cart[item]
-     if cart[item][:count] >= num
-       amount = cart[item][:count] / num
+     if count >= num
+       amount = count / num
         if cart["#{item} W/COUPON"]
-          cart[item][:count] -= num
+          count -= num
           cart["#{item} W/COUPON"][:count] += amount
         else
           cart["#{item} W/COUPON"] = { price: coupon[:cost], clearance: cart[item][:clearance], count: amount }
-          cart[item][:count] -= (num * amount)
+          count -= (num * amount)
         end
       end
     end
