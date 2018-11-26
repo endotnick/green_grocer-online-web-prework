@@ -4,6 +4,8 @@ def consolidate_cart(cart)
   cart.each do |items|
     items.each do |item, data|
       small_cart[item] = data.merge({:count => cart.count(items)})
+    end
+  end
 end
 
 def apply_coupons(cart, coupons)
