@@ -14,20 +14,20 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]
     if cart[item]
       count = cart[item][:count]
-      if cart.has_key?(item_key + " W/COUPON")
-        amount = cart[item_key][:count] / coupon[:num]
-        cart[item_key][:count] -= coupon[:num]
-        cart[item_key + " W/COUPON"][:count] += amount
-      #  binding.pry
-      else
-        amount = cart[item_key][:count] / coupon[:num]
-        clearance=cart[item_key][:clearance]
-        cart[item_key + " W/COUPON"] = {price: coupon[:cost], clearance: clearance, count: amount}
-        cart[item_key][:count] -= (coupon[:num] * amount)
-      #  binding.pry
-      end
-=begin
       if count <= item[:count]
+        if cart.has_key?(item_key + " W/COUPON")
+          amount = cart[item_key][:count] / coupon[:num]
+          cart[item_key][:count] -= coupon[:num]
+          cart[item_key + " W/COUPON"][:count] += amount
+        #  binding.pry
+        else
+          amount = cart[item_key][:count] / coupon[:num]
+          clearance=cart[item_key][:clearance]
+          cart[item_key + " W/COUPON"] = {price: coupon[:cost], clearance: clearance, count: amount}
+          cart[item_key][:count] -= (coupon[:num] * amount)
+        #  binding.pry
+        end
+=begin
         if count > 0
           cart[item][:count] = count / coupon[:num]
         elsif count == 0
