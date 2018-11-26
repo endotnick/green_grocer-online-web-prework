@@ -10,7 +10,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  coupons.each do |coupon, data|
+  coupons.each do |coupon|
     item = coupon[:item]
     count = cart[item][:count]
     if count > 0
