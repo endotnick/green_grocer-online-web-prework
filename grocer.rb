@@ -20,7 +20,7 @@ def apply_coupons(cart, coupons)
     end
 
     if !(count < 0)
-      entry =  {:price => item[:cost], :clearance => cart[item][:clearance], :count => count / coupon[:num] }
+      entry =  { :price => item[:cost], :clearance => cart[item][:clearance], :count => count / coupon[:num] }
       cart["#{item} W/COUPON"] = entry
     end
   end
