@@ -24,6 +24,7 @@ def apply_coupons(cart, coupons)
       cart["#{item} W/COUPON"] = entry
     end
   end
+  cart
 end
 
 def apply_clearance(cart)
