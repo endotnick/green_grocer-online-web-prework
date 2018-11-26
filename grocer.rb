@@ -1,15 +1,19 @@
 def consolidate_cart(cart)
-  # code here
+  small_cart = {}
+
+  cart.each do |items|
+    items.each do |item, data|
+      small_cart[item] = data.merge({:count => cart.count(items)})
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+
 end
 
 def apply_clearance(cart)
-  # code here
+
 end
 
 def checkout(cart, coupons)
-  # code here
+
 end
