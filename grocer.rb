@@ -14,15 +14,17 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]
     if cart[item]
       count = cart[item][:count]
-      if count > 0
-        cart[item][:count] = count / coupon[:num]
-      elsif count == 0
-        cart.delete(item)
-      end
+      if count <= item[:count]
+        if count > 0
+          cart[item][:count] = count / coupon[:num]
+        elsif count == 0
+          cart.delete(item)
+        end
 
-      if !(count < 0)
-        entry =  { :price => item[:cost], :clearance => cart[item][:clearance], :count => count / coupon[:num] }
-        cart["#{item} W/COUPON"] = entry
+        if !(count < 0)
+          entry =  { :price => item[:cost], :clearance => cart[item][:clearance], :count => count / coupon[:num] }
+          cart["#{item} W/COUPON"] = entry
+        end
       end
     end
   end
