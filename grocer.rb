@@ -11,10 +11,9 @@ end
 
 def apply_coupons(cart, coupons)
   coupons.each do |coupon|
-    item = coupon[:item]
-    if cart[item]
-      count = cart[item][:count]
-      if count <= item[:count]
+   item_key = coupon[:item]
+   if cart.has_key?(item_key)
+   if cart[item_key][:count] >= coupon[:num]
         if cart.has_key?(item_key + " W/COUPON")
           amount = cart[item_key][:count] / coupon[:num]
           cart[item_key][:count] -= coupon[:num]
